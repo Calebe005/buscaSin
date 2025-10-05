@@ -1,0 +1,2 @@
+# buscaSin
+Dicionário de Sinônimos
