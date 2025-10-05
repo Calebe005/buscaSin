@@ -1,17 +1,27 @@
 <!DOCTYPE html>
-<html lang="pt.br">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BuscaSin</title>
+    <link rel="stylesheet" href="assets/styles/style.css">
 </head>
 <body>
     <main class="conteudoPrincipal">
-        <input type="text" name="palavra"placeholder="Pesquise um sinônimo..." class="inputPalavra">
-        <input type="number" placeholder="Qnt" class="qntResult">
-        <button class="botaInput">Pesquisar</button>
+        <h1 class="tituloPrincipal">BuscaSin...</h1>
+        <div class="inputButton">
+            <input type="text" name="palavra"placeholder="Pesquise um sinônimo..." class="inputPalavra">
+            <button class="botaInput"></button>
+        </div>
+        <input type="text" placeholder="Qnt" class="qntResult">
+        
     </main>
-    <div class="resultado"></div>
+    <div class="resultado">
+        <h2>Sinonimos encontrados</h2>
+        <section class="secResultados">
+            <p class="resultados"></p>
+        </section>
+    </div>
 
 
     <script src="assets/scripts/script.js"></script>

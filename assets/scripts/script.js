@@ -40,15 +40,23 @@ async function buscarSinonimos(inputPalavra){
 // TODO: Mostrar sinônimos:
 function mostrarSinonimos(sinonimos){
    const qntResultados = parseInt(document.querySelector(".qntResult").value);
+
+   // ! Mensagem de reusltados insuficientes
+   if(sinonimos.length < qntResultados){
+        console.log("Erro");
+   }
+   
     sinonimos = sinonimos.splice(0,qntResultados);
     console.log(sinonimos)
-    const resultado = document.querySelector(".resultado");
+    const resultadoDiv = document.querySelector(".resultado");
+    const resultado = document.querySelector(".resultados");
     let frase = ""
     sinonimos.forEach((e)=>{
 
         frase +=  " ,"+ e
     })
     resultado.innerHTML= frase;
+    resultadoDiv.classList.add("surgindo") // ! Mostrando resultados
     
 
 }
