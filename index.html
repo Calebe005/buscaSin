@@ -5,8 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BuscaSin</title>
     <link rel="stylesheet" href="assets/styles/style.css">
+    <link rel="stylesheet" href="assets/styles/loadingPage.css">
 </head>
 <body>
+    <!-- TODO Animação digitação -->
+    <p class="digitacao"></p>
+
+    <!-- ! Conteiner de erro -->
+    <span class="error"></span>
     <main class="conteudoPrincipal">
         <h1 class="tituloPrincipal">BuscaSin...</h1>
         <div class="inputButton">
@@ -16,8 +22,10 @@
         <input type="text" placeholder="Qnt" class="qntResult">
         
     </main>
+    <!-- ? Conteiner de amostragem de resultado -->
     <div class="resultado">
-        <h2>Sinonimos encontrados</h2>
+        <img src="assets/img/cross.png" alt="btn-fechar" srcset=""class="fechar">
+        <h2>Sinônimos encontrados</h2>
         <section class="secResultados">
             <p class="resultados"></p>
         </section>
