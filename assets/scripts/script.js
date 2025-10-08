@@ -1,13 +1,16 @@
 /**
-* * Criação de um dicionário de sinônimo a partir da API freedicionaryapi
+* 
 *  
 **/
 // TODO:  link para pesquisa https://freedictionaryapi.com/api/v1/entries/pt/ouvir
+
 const botaoPesquisa = document.querySelector(".botaInput");
+let opcao;
 
 // Quando o botão for clicado
 botaoPesquisa.onclick = ()=>{
     const inputPalavra = document.querySelector(".inputPalavra").value.trim();
+
     // TODO: Exibindo tela de loading:
     const loading = document.createElement("div");
     document.body.appendChild(loading);
@@ -17,14 +20,60 @@ botaoPesquisa.onclick = ()=>{
         div.classList.add("bolas");
         loading.appendChild(div);
     }
-    
 
-    buscarSinonimos(inputPalavra); // Chamada de função da API
+
+    
+    busca(inputPalavra, opcao); // Chamada de função da API
 }
+
+
+// Abrir opções:
+const tipoBusca = document.querySelector("#tipoBusca");
+const opcoes = document.querySelector(".opcoes");
+
+// Verificando se o menu está aberto;
+let aberto = 0;
+tipoBusca.onclick = () => {
+    if(aberto == 0){
+        opcoes.classList.add("abriu");
+        aberto = 1;
+    }else{
+        opcoes.classList.remove("abriu");
+        aberto = 0;
+    } 
+}
+
+// Retorna o tipo de busca;
+const opcoesBusca = document.querySelectorAll(".opcaoBusca");
+// Para cada clique de botão:
+opcoesBusca.forEach((e)=>{
+    e.onclick = ()=>{
+    const busca = e.textContent;
+    document.querySelector(".inputPalavra").placeholder = `Busque por ${busca}`;
+
+        // ? Sinônimos:
+        if(busca === "Sinônimos"){
+            opcao = "synonyms"
+        }else if(busca === "Antônimos"){// ? Antônimos:
+            opcao = "antonyms"
+        }else{ // ? Definições:
+            opcao = "definitions"
+        }
+    }
+});
+
+
+
+
+
+
+
+
+
 const resultadoDiv = document.querySelector(".resultado");
 
 // * Buscando os sinônimos na API
-async function buscarSinonimos(inputPalavra){
+/* async function buscarSinonimos(inputPalavra){
     const url = `https://freedictionaryapi.com/api/v1/entries/pt/${inputPalavra}`
     fetch(url)
     // TODO: Abrindo informações para obter apenas os sinônimos;
@@ -56,7 +105,11 @@ async function buscarSinonimos(inputPalavra){
         }, 3000);
         
     });
-}
+} */
+
+
+
+
 
 // TODO: Mostrar sinônimos:
 function mostrarSinonimos(sinonimos){
@@ -118,11 +171,13 @@ setInterval(()=>{
     
     let larguraP = frases[i].length;
     paragrafo.innerHTML = frases[i]
-    console.log(frases[i], larguraP)
     i++;
     if(i>2){i=0};
     paragrafo.style.setProperty("--largura", (larguraP-5)+"rem");
 }, 6250);
+
+
+
 
 
 
